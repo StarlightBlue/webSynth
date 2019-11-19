@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #5f6e87 !important;
+}
+
+.key{
+    background-color: ivory;
+    position: relative;
+    width: 50px;
+    height: 100px;
+    outline: 2px solid darkgray;
+
+}
+
+.Bkey{
+    background-color: black;
+    width: 20px;
+    height: 50px;
+    z-index: 2;
+    margin: 0 -10px 0 -10px;
+    outline: 2px solid darkgray;
+}
