@@ -1,38 +1,58 @@
-<select name="" id="osc">
-  <option value="sine">Sine</option>
-  <option value="sawtooth">Saw</option>
-  <option value="triangle">Triangle</option>
-  <option value="square">Square</option>
-</select>
+<div class="container">
+  <label for="osc">Carrier Oscillator</label>
+  <select name="osc" id="osc">
+    <option value="triangle">Triangle</option>
+    <option value="sine">Sine</option>
+    <option value="sawtooth">Sawtooth</option>
+    <option value="square">Pulse</option>
+  </select>
 
-<div id="piano" class="d-flex m-3 p-3">
-  <div data-note="C4" class="key"></div>
-  <div data-note="C#4" class="Bkey"></div>
-  <div data-note="D4" class="key"></div>
-  <div data-note="D#4" class="Bkey"></div>
-  <div data-note="E4" class="key"></div>
-  <div data-note="F4" class="key"></div>
-  <div data-note="F#4" class="Bkey"></div>
-  <div data-note="G4" class="key"></div>
-  <div data-note="G#4" class="Bkey"></div>
-  <div data-note="A4" class="key"></div>
-  <div data-note="A#4" class="Bkey"></div>
-  <div data-note="B4" class="key"></div>
-  <div data-note="C5" class="key"></div>
-  <div data-note="C#5" class="Bkey"></div>
-  <div data-note="D5" class="key"></div>
-  <div data-note="D#5" class="Bkey"></div>
-  <div data-note="E5" class="key"></div>
-  <div data-note="F5" class="key"></div>
-  <div data-note="F#5" class="Bkey"></div>
-  <div data-note="G5" class="key"></div>
-  <div data-note="G#5" class="Bkey"></div>
-  <div data-note="A5" class="key"></div>
-  <div data-note="A#5" class="Bkey"></div>
-  <div data-note="B5" class="key"></div>
-  <div data-note="C6" class="key"></div>
+  <div class="slidecontainer">
+    <p>Attack = <span id="attack"></span></p>
+    <input type="range" min="1" max="200" value='' class="slider" id="myAttack">
+    <p>Decay = <span id="decay"></span></p>
+    <input type="range" min="1" max="200" value='' class="slider" id="myDecay">
+    <p>Sustain = <span id="sustain"></span></p>
+    <input type="range" min="1" max="100" value='' class="slider" id="mySustain">
+    <p>Release = <span id="release"></span></p>
+    <input type="range" min="1" max="400" value='' class="slider" id="myRelease">
+  </div>
+  <div class="slidecontainer">
+    <p>Modulation Index = <span id="modIndex"></span></p>
+    <input type="range" min="0" max="40" value='0' class="slider" id="myModIdx">
+  </div>
+
+
+  <div id="piano" class="d-flex m-3 p-3">
+    <div data-note="C4" class="key"></div>
+    <div data-note="C#4" class="Bkey"></div>
+    <div data-note="D4" class="key"></div>
+    <div data-note="D#4" class="Bkey"></div>
+    <div data-note="E4" class="key"></div>
+    <div data-note="F4" class="key"></div>
+    <div data-note="F#4" class="Bkey"></div>
+    <div data-note="G4" class="key"></div>
+    <div data-note="G#4" class="Bkey"></div>
+    <div data-note="A4" class="key"></div>
+    <div data-note="A#4" class="Bkey"></div>
+    <div data-note="B4" class="key"></div>
+    <div data-note="C5" class="key"></div>
+    <div data-note="C#5" class="Bkey"></div>
+    <div data-note="D5" class="key"></div>
+    <div data-note="D#5" class="Bkey"></div>
+    <div data-note="E5" class="key"></div>
+    <div data-note="F5" class="key"></div>
+    <div data-note="F#5" class="Bkey"></div>
+    <div data-note="G5" class="key"></div>
+    <div data-note="G#5" class="Bkey"></div>
+    <div data-note="A5" class="key"></div>
+    <div data-note="A#5" class="Bkey"></div>
+    <div data-note="B5" class="key"></div>
+    <div data-note="C6" class="key"></div>
+  </div>
+
+  <button class="test">test</button>
+  <button class="stop">stop</button>
+
+  <router-outlet></router-outlet>
 </div>
-
-
-
-<router-outlet></router-outlet>
