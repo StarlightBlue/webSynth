@@ -6,17 +6,11 @@ window.onload = function () {
     }).toMaster()
 
 
-    var synth = new Tone.FMSynth({
-        harmonicity: 3,
-        modulationIndex: 12,
+    var synth = new Tone.PolySynth({
         oscillator: {
-            type: 'triangle'
-        },
-        modulation: {
-            type: 'sine'
+            type:"triangle"
         }
     }).connect(filter);
-
 
 
     var analyzer = new Tone.Analyser('waveform', 256);
@@ -67,11 +61,13 @@ window.onload = function () {
         synth.triggerAttack(e.target.dataset.note);
     });
     piano.addEventListener("mouseup", e => {
-        synth.triggerRelease();
+        synth.triggerRelease(e.target.dataset.note);
     });
     $('#osc').change(function () {
         var newtype = $(this).val();
-        synth.oscillator.type = newtype;
+        for(let i = 0; i < synth.voices.length; i++){
+            synth.voices[i].oscillator.type = newtype;
+        }
     });
     $('#filterType').change(function () {
         var newtype = $(this).val();
@@ -80,7 +76,7 @@ window.onload = function () {
     $('.test').click(function () {
         test.triggerAttackRelease("c5", "4n")
     });
-    var ModIdxSlider = document.getElementById('myModIdx');
+    /* var ModIdxSlider = document.getElementById('myModIdx');
     this.document.getElementById('myModIdx').value = synth.modulationIndex.value;
     var curIdx = synth.modulationIndex.value;
     var showIdx = document.getElementById('modIndex');
@@ -97,8 +93,8 @@ window.onload = function () {
     HarmSlider.oninput = function () {
         showHarm.innerHTML = ((this.value) / 100).toFixed(2);
         synth.harmonicity.value = (this.value) / 100;
-    }
-    var fcutoffSlider = document.getElementById('myfCutOff');
+    } */
+   /*  var fcutoffSlider = document.getElementById('myfCutOff');
     this.document.getElementById('myfCutOff').value = filter.frequency.value;
     var curFeq = filter.frequency.value;
     var showFeq = document.getElementById('fCutOff');
@@ -146,7 +142,7 @@ window.onload = function () {
         showRel.innerHTML = ((this.value) / 100).toFixed(2);
         synth.envelope.release = (this.value) / 100;
     }
-
+ */
     WebMidi.enable(function (err) {
 
         if (err) {
@@ -159,7 +155,7 @@ window.onload = function () {
                 synth.triggerAttack(""+e.note.name+e.note.octave);
             })
             input.addListener('noteoff', "all", function(e) {
-                synth.triggerRelease();
+                synth.triggerRelease(""+e.note.name+e.note.octave);
             })
             
         }
