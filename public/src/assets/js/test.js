@@ -6,10 +6,10 @@ window.onload = function () {
     }).toMaster()
 
 
-    var synth = new Tone.PolySynth(6, Tone.synth,
+    var synth = new Tone.PolySynth(4, Tone.synth,
         {
             oscillator: {
-                type:"pwm"
+                type:"triangle",
             }
         }
     ).connect(filter);
@@ -18,6 +18,7 @@ window.onload = function () {
     var carrier = "triangle";
 
     console.log(synth.voices[0].oscillator.type)
+    console.log(synth.voices[0].oscillator)
 
     var analyzer = new Tone.Analyser('waveform', 256);
     var canvas = document.getElementById("oscilloscope");
