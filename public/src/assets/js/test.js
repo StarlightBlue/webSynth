@@ -59,10 +59,16 @@ window.onload = function () {
     }).toMaster()
 
     const piano = document.getElementById('piano');
-    piano.addEventListener("mousedown", e => {
+    /* piano.addEventListener("mousedown", e => {
         synth.triggerAttack(e.target.dataset.note);
     });
     piano.addEventListener("mouseup", e => {
+        synth.triggerRelease(e.target.dataset.note);
+    }); */
+    piano.addEventListener("mouseover", e => {
+        synth.triggerAttack(e.target.dataset.note);
+    });
+    piano.addEventListener("mouseout", e => {
         synth.triggerRelease(e.target.dataset.note);
     });
     $('#osc').change(function () {
@@ -74,9 +80,6 @@ window.onload = function () {
     $('#filterType').change(function () {
         var newtype = $(this).val();
         filter.type = newtype;
-    });
-    $('.test').click(function () {
-        test.triggerAttackRelease("c5", "4n")
     });
     /* var ModIdxSlider = document.getElementById('myModIdx');
     this.document.getElementById('myModIdx').value = synth.modulationIndex.value;
