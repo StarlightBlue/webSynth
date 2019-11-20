@@ -161,14 +161,15 @@ window.onload = function () {
         } else {
             console.log("WebMidi enabled!");
             console.log(WebMidi.inputs);
-            var input = WebMidi.inputs[0];
+            if (WebMidi.inputs.length > 0){
+                var input = WebMidi.inputs[0];
             input.addListener('noteon', "all", function(e) {
                 synth.triggerAttack(""+e.note.name+e.note.octave);
             })
             input.addListener('noteoff', "all", function(e) {
                 synth.triggerRelease(""+e.note.name+e.note.octave);
             })
-            
+            }   
         }
     });
 
