@@ -1,5 +1,9 @@
 window.onload = function () {
 
+    var filter = new Tone.Filter({
+        frequency:350,
+        type: "highpass"
+    }).toMaster()
 
 
     var synth = new Tone.FMSynth({
@@ -11,7 +15,9 @@ window.onload = function () {
         modulation:{
             type:'sine'
         }
-    }).toMaster();
+    }).connect(filter);
+
+    
 
     var analyzer = new Tone.Analyser('waveform',256);
     var canvas = document.getElementById("oscilloscope");
@@ -67,6 +73,10 @@ window.onload = function () {
         var newtype = $(this).val();
         synth.oscillator.type = newtype;
     });
+    $('#filterType').change(function () {
+        var newtype = $(this).val();
+        filter.type = newtype;
+    });
     $('.test').click(function () {
         test.triggerAttackRelease("c5", "4n")
     });
@@ -78,6 +88,15 @@ window.onload = function () {
     ModIdxSlider.oninput = function() {
         showIdx.innerHTML = (this.value);
         synth.modulationIndex.value = (this.value)
+    }
+    var fcutoffSlider = document.getElementById('myfCutOff');
+    this.document.getElementById('myfCutOff').value = filter.frequency.value;
+    var curFeq = filter.frequency.value;
+    var showFeq = document.getElementById('fCutOff');
+    showFeq.innerHTML = curFeq;
+    fcutoffSlider.oninput = function() {
+        showFeq.innerHTML = (this.value);
+        filter.frequency.value = (this.value)
     }
     var AtkSlider = document.getElementById('myAttack');
     document.getElementById('myAttack').value = synth.envelope.attack*100;
