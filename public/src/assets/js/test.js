@@ -89,6 +89,15 @@ window.onload = function () {
         showIdx.innerHTML = (this.value);
         synth.modulationIndex.value = (this.value)
     }
+    var HarmSlider = document.getElementById('myHarm');
+    this.document.getElementById('myHarm').value = synth.harmonicity.value * 100;
+    var curHarm = synth.harmonicity.value;
+    var showHarm = document.getElementById('harm');
+    showHarm.innerHTML = curHarm;
+    HarmSlider.oninput = function () {
+        showHarm.innerHTML = ((this.value) / 100).toFixed(2);
+        synth.harmonicity.value = (this.value) / 100;
+    }
     var fcutoffSlider = document.getElementById('myfCutOff');
     this.document.getElementById('myfCutOff').value = filter.frequency.value;
     var curFeq = filter.frequency.value;
