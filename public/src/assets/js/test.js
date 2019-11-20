@@ -24,7 +24,7 @@ window.onload = function () {
     var canvas = document.getElementById("oscilloscope");
     var canvasCtx = canvas.getContext("2d");
     canvas.width = 500;
-    canvas.height = 200;
+    canvas.height = 150;
 
     synth.connect(analyzer);
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,7 +44,7 @@ window.onload = function () {
 
         for (var i = 0; i < value.length; i++) {
             var v = value[i] * 3;
-            var y = (v * canvas.height / 3) + 100;
+            var y = (v * canvas.height / 3) + 75;
             if (i === 0) {
                 canvasCtx.moveTo(x, y);
             } else {

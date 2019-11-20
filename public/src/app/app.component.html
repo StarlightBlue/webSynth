@@ -1,51 +1,62 @@
 <div class="container">
-  <div class="d-flex">
-    <div>
-      <label for="type">Oscillator Type</label>
-      <select name="type" id="type">
-        <option value="">Basic</option>
-        <option value="fm">FM</option>
-        <option value="am">AM</option>
-        <option value="fat">Fat</option>
-      </select>
-      <label for="osc">Carrier Oscillator</label>
-      <select name="osc" id="osc">
-        <option value="triangle">Triangle</option>
-        <option value="sine">Sine</option>
-        <option value="sawtooth">Sawtooth</option>
-        <option value="square">square</option>
-      </select>
-    </div>
-
-
-
-    <div class="slidecontainer">
-      <p>Attack = <span id="attack"></span></p>
-      <input type="range" min="1" max="200" value='' class="slider" id="myAttack">
-      <p>Decay = <span id="decay"></span></p>
-      <input type="range" min="1" max="200" value='' class="slider" id="myDecay">
-      <p>Sustain = <span id="sustain"></span></p>
-      <input type="range" min="0" max="100" value='' class="slider" id="mySustain">
-      <p>Release = <span id="release"></span></p>
-      <input type="range" min="1" max="400" value='' class="slider" id="myRelease">
-    </div>
- <!--    <div class="slidecontainer">
-      <p>Modulation Index = <span id="modIndex"></span></p>
-      <input type="range" min="0" max="40" value='0' class="slider" id="myModIdx">
-      <p>harmonicity = <span id="harm"></span></p>
-      <input type="range" min="10" max="400" value='' class="slider" id="myHarm">
-    </div> -->
-    <div class="slidecontainer">
-      <label for="filterType">Filter Type</label>
-      <select name="filterType" id="filterType">
-        <option value="highpass">Highpass</option>
-        <option value="lowpass">Lowpass</option>
-      </select>
-      <p>Filter CutOff = <span id="fCutOff"></span></p>
-      <input type="range" min="10" max="4000" value='0' class="slider" id="myfCutOff">
-    </div>
+  <h1>WEBSYNTH (w/ Tone.js)</h1>
+  <div class="mainoscbox">
+    <h3>Oscillator</h3>
+    <select name="mainosc" class="mainosc" (change)="onChange($event)">
+        <option *ngFor="let osc of oscillators" [value]="osc.type">{{osc.type}}</option>
+    </select>
   </div>
+  <div class="modifiers">
+    <div class="d-flex">
+      <div class="slidecontainer">
+        <router-outlet></router-outlet>
+      </div>
+  <!--    <div class="slidecontainer">
+        <p>Modulation Index = <span id="modIndex"></span></p>
+        <input type="range" min="0" max="40" value='0' class="slider" id="myModIdx">
+        <p>harmonicity = <span id="harm"></span></p>
+        <input type="range" min="10" max="400" value='' class="slider" id="myHarm">
+      </div> -->
+      <!-- <div class="slidecontainer">
+        <label for="filterType">Filter Type</label>
+        <select name="filterType" id="filterType">
+          <option value="highpass">Highpass</option>
+          <option value="lowpass">Lowpass</option>
+        </select>
+        <p>Filter CutOff = <span id="fCutOff"></span></p>
+        <input type="range" min="10" max="4000" value='0' class="slider" id="myfCutOff">
+      </div>
+    </div> -->
+      <div class="slidecontainer">
+        <p>Attack = <span id="attack"></span></p>
+        <input type="range" min="1" max="200" value='' class="slider" id="myAttack">
+        <p>Decay = <span id="decay"></span></p>
+        <input type="range" min="1" max="200" value='' class="slider" id="myDecay">
+        <p>Sustain = <span id="sustain"></span></p>
+        <input type="range" min="0" max="100" value='' class="slider" id="mySustain">
+        <p>Release = <span id="release"></span></p>
+        <input type="range" min="1" max="400" value='' class="slider" id="myRelease">
+      </div>
+      <div class="slidecontainer">
+          <p class="dropdownbox">
+          <label for="filterType">Filter Type</label>
+          <br/>
+          <select name="filterType" id="filterType">
+              <option value="highpass">Highpass</option>
+              <option value="lowpass">Lowpass</option>
+          </select>
+          </p>
+          <p>Filter CutOff = <span id="fCutOff"></span></p>
+          <input type="range" min="10" max="4000" value='0' class="slider" id="myfCutOff">
+      </div>
+    </div>
+    
+    <div class='bottom'>
+      <div class="oscbox">
+        <canvas id="oscilloscope"></canvas>
+      </div>
 
+<<<<<<< Updated upstream
 
   <div id="piano" class="d-flex m-3 p-3">
     <div data-note="C4" class="key"></div>
@@ -84,3 +95,34 @@
 
   <router-outlet></router-outlet>
 </div>
+=======
+      <div id="piano" class="d-flex m-3 p-3">
+        <div data-note="C4" class="key"></div>
+        <div data-note="C#4" class="Bkey"></div>
+        <div data-note="D4" class="key"></div>
+        <div data-note="D#4" class="Bkey"></div>
+        <div data-note="E4" class="key"></div>
+        <div data-note="F4" class="key"></div>
+        <div data-note="F#4" class="Bkey"></div>
+        <div data-note="G4" class="key"></div>
+        <div data-note="G#4" class="Bkey"></div>
+        <div data-note="A4" class="key"></div>
+        <div data-note="A#4" class="Bkey"></div>
+        <div data-note="B4" class="key"></div>
+        <div data-note="C5" class="key"></div>
+        <div data-note="C#5" class="Bkey"></div>
+        <div data-note="D5" class="key"></div>
+        <div data-note="D#5" class="Bkey"></div>
+        <div data-note="E5" class="key"></div>
+        <div data-note="F5" class="key"></div>
+        <div data-note="F#5" class="Bkey"></div>
+        <div data-note="G5" class="key"></div>
+        <div data-note="G#5" class="Bkey"></div>
+        <div data-note="A5" class="key"></div>
+        <div data-note="A#5" class="Bkey"></div>
+        <div data-note="B5" class="key"></div>
+        <div data-note="C6" class="key"></div>
+      </div>
+    </div>
+  </div>
+>>>>>>> Stashed changes
