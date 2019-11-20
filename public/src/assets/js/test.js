@@ -72,7 +72,7 @@ window.onload = function () {
     piano.addEventListener("mouseout", e => {
         synth.triggerRelease(e.target.dataset.note);
     });
-    $('#osc').change(function () {
+    $(document).on('change','#osc', function () {
         carrier = $(this).val();
         for(let i = 0; i < synth.voices.length; i++){
             synth.voices[i].oscillator.type = type+carrier;
