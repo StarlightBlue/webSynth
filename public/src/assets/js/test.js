@@ -6,14 +6,18 @@ window.onload = function () {
     }).toMaster()
 
 
-    var synth = new Tone.PolySynth({
-        polyphony: 6,
-        oscillator: {
-            type:"triangle"
+    var synth = new Tone.PolySynth(6, Tone.synth,
+        {
+            oscillator: {
+                type:"pwm"
+            }
         }
-    }).connect(filter);
+    ).connect(filter);
 
-    console.log(synth.voices[0])
+    var type = "";
+    var carrier = "triangle";
+
+    console.log(synth.voices[0].oscillator.type)
 
     var analyzer = new Tone.Analyser('waveform', 256);
     var canvas = document.getElementById("oscilloscope");
@@ -52,34 +56,39 @@ window.onload = function () {
     }
     drawGraph();
 
-    var test = new Tone.FMSynth({
-        modulation: {
-            type: "triangle"
-        }
-    }).toMaster()
 
     const piano = document.getElementById('piano');
-    /* piano.addEventListener("mousedown", e => {
+    piano.addEventListener("mousedown", e => {
         synth.triggerAttack(e.target.dataset.note);
     });
     piano.addEventListener("mouseup", e => {
         synth.triggerRelease(e.target.dataset.note);
-    }); */
-    piano.addEventListener("mouseover", e => {
-        synth.triggerAttack(e.target.dataset.note);
     });
+    /* piano.addEventListener("mouseover", e => {
+        console.log(e.target.dataset.note)
+        synth.triggerAttack(e.target.dataset.note);
+    }); */
     piano.addEventListener("mouseout", e => {
         synth.triggerRelease(e.target.dataset.note);
     });
     $('#osc').change(function () {
-        var newtype = $(this).val();
+        carrier = $(this).val();
         for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[i].oscillator.type = newtype;
+            synth.voices[i].oscillator.type = type+carrier;
+        }
+    });
+    $('#type').change(function () {
+        type = $(this).val();
+        for(let i = 0; i < synth.voices.length; i++){
+            synth.voices[i].oscillator.type = type+carrier;
         }
     });
     $('#filterType').change(function () {
         var newtype = $(this).val();
         filter.type = newtype;
+    });
+    $('.start').click(function () {
+        console.log(synth.voices)
     });
     /* var ModIdxSlider = document.getElementById('myModIdx');
     this.document.getElementById('myModIdx').value = synth.modulationIndex.value;
@@ -117,7 +126,7 @@ window.onload = function () {
     AtkSlider.oninput = function () {
         showAtk.innerHTML = ((this.value) / 100).toFixed(2);
         for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[0].envelope.attack = (this.value) / 100;
+            synth.voices[i].envelope.attack = (this.value) / 100;
         }
     }
 
@@ -129,7 +138,7 @@ window.onload = function () {
     DcySlider.oninput = function () {
         showDcy.innerHTML = ((this.value) / 100).toFixed(2);
         for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[0].envelope.decay = (this.value) / 100;
+            synth.voices[i].envelope.decay = (this.value) / 100;
         }
     }
 
@@ -141,7 +150,7 @@ window.onload = function () {
     SusSlider.oninput = function () {
         showSus.innerHTML = ((this.value) / 100).toFixed(2);
         for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[0].envelope.decay.sustain = (this.value) / 100;
+            synth.voices[i].envelope.sustain = (this.value) / 100;
         }
     }
 
@@ -153,7 +162,7 @@ window.onload = function () {
     RelSlider.oninput = function () {
         showRel.innerHTML = ((this.value) / 100).toFixed(2);
         for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[0].envelope.decay.release = (this.value) / 100;
+            synth.voices[i].envelope.release = (this.value) / 100;
         }
     }
 
