@@ -120,13 +120,14 @@ h1{
 }
 
 .box{
-    border: 1px solid slategray;
+    border: 3px solid #5e82bd;
     background-color: none;
     width: 40px;
     height: 40px;
+    margin-bottom: 3px;
 }
 #tempo{
     position: absolute;
-    margin-top: -210px;
-    margin-left: -1px;
+    margin-top: -196px;
+    margin-left: 370px;
 }

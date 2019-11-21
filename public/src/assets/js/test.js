@@ -310,4 +310,77 @@ window.onload = function () {
         }
     });
 
+        $('#tempo').hide();
+        $(document).on('click', function(){
+            $('#tempo').show();
+
+        })
+
+        var bpmslider = document.getElementById('bpmslider');
+        var curbpm = bpmslider.value;
+        var showbpm = document.getElementById('bpm');
+        showbpm.innerHTML = curbpm;
+        bpmslider.oninput = function () {
+            showbpm.innerHTML = this.value;
+        }
+        const synths = [new Tone.Synth(), new Tone.Synth(), new Tone.Synth(), new Tone.Synth()];
+        synths[0].oscillator.type = "triangle";
+        synths[1].oscillator.type = "sine";
+        synths[2].oscillator.type = "sawtooth";
+        synths[3].oscillator.type = "square";
+
+        const gain = new Tone.Gain(0.6).toMaster();
+
+        synths.forEach(synth => synth.connect(gain));
+
+        const rows = document.body.querySelectorAll("#seqrow");
+        for (let i = 0; i < rows.length; i++) {
+            for (let j = 0; j < 16; j++) {
+                rows[i].innerHTML += '<button class="seqbtn" value=' + j + '></button>';
+            }
+        }
+
+        $('.seqbtn').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+            else {
+                $(this).addClass("active");
+            }
+        });
+
+        const notes = ["G5", "E4", "C3", "B2"];
+        let index = 0;
+
+        Tone.Transport.scheduleRepeat(repeat, "16n");
+        Tone.Transport.start();
+
+        let pos = -32;
+        const maxPos = 598;
+        let timer = document.getElementById('tempo');
+        let delay = 15000 / bpmslider.value;
+        function tracker() {
+            if (pos > maxPos) {
+                pos = -32;
+            }
+            pos += 42;
+            timer.style.left = `${pos}px`;
+        }
+
+        function repeat(time) {
+            tracker();
+            Tone.Transport.bpm.value = bpmslider.value;
+            let step = index % 16;
+            for (let i = 0; i < rows.length; i++) {
+                let synth = synths[i];
+                let row = rows[i];
+                let note = notes[i];
+                let input = row.querySelector(`.seqbtn:nth-child(${step + 1})`)
+                if ($(input).hasClass("active")) {
+                    synth.triggerAttackRelease(note, "16n", time);
+                }
+            }
+            index++;
+        }
+
 }
