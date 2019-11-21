@@ -9,17 +9,15 @@ h1{
     margin-top: -10px;
     text-align: center;
 }
-.bottom{
-    outline: 1px dotted white;
-}
+
 .modifiers, .mainoscbox{
     display: inline-block;
     vertical-align: top;
-    outline: 1px dotted white;
 }
 
 .mainoscbox{
-    height: 645px;
+    height: 615px;
+    background-color: rgb(9,9,121);
 }
 .mainosc{
     width: 200px;
@@ -60,9 +58,9 @@ h1{
     margin-left: 25px;
     display: inline-block;
     vertical-align: top;
-    outline: 1px dotted white;
+    background-color: rgb(9,9,121);
 }
-.slider {
+.slider, .childslider {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
@@ -74,12 +72,15 @@ h1{
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
+.childslider{
+    width: 134%;
+}
 
 .slider:hover {
     opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb, .childslider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -89,7 +90,7 @@ h1{
     cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.slider::-moz-range-thumb, .childslider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
