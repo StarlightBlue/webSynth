@@ -89,6 +89,26 @@ window.onload = function () {
                 synth.voices[i].oscillator.type = 'triangle';
             }
         }
+        if (this.value == 'fm'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'fmtriangle';
+            }
+        }
+        if (this.value == 'am'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'amtriangle';
+            }
+        }
+        if (this.value == 'fat'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'fattriangle';
+            }
+        }
+        if (this.value == 'pwm'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'pwm';
+            }
+        }
     });
     $('#type').change(function () {
         type = $(this).val();

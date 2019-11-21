@@ -11,6 +11,10 @@
       <div class="slidecontainer">
         <app-basic *ngIf="(curOsc == 'basic')"></app-basic>
         <app-pulse *ngIf="(curOsc == 'pulse')"></app-pulse>
+        <app-fm *ngIf="(curOsc == 'fm')"></app-fm>
+        <app-am *ngIf="(curOsc == 'am')"></app-am>
+        <app-fat *ngIf="(curOsc == 'fat')"></app-fat>
+        <app-pwm *ngIf="(curOsc == 'pwm')"></app-pwm>
         <router-outlet></router-outlet>
       </div>
   <!--    <div class="slidecontainer">
