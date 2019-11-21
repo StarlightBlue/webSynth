@@ -3,7 +3,7 @@
   <div class="mainoscbox">
     <h3>Oscillator</h3>
     <select name="mainosc" class="mainosc" [(ngModel)]="curOsc">
-        <option *ngFor="let osc of oscillators" [value]="osc.type">{{osc.type}}</option>
+      <option *ngFor="let osc of oscillators" [value]="osc.type">{{osc.type}}</option>
     </select>
   </div>
   <div class="modifiers">
@@ -16,7 +16,7 @@
         <app-fat *ngIf="(curOsc == 'fat')"></app-fat>
         <app-pwm *ngIf="(curOsc == 'pwm')"></app-pwm>
       </div>
-  <!--    <div class="slidecontainer">
+      <!--    <div class="slidecontainer">
         <p>Modulation Index = <span id="modIndex"></span></p>
         <input type="range" min="0" max="40" value='0' class="slider" id="myModIdx">
         <p>harmonicity = <span id="harm"></span></p>
@@ -43,19 +43,19 @@
         <input type="range" min="1" max="400" value='' class="slider" id="myRelease">
       </div>
       <div class="slidecontainer">
-          <p class="dropdownbox">
+        <p class="dropdownbox">
           <label for="filterType">Filter Type</label>
-          <br/>
+          <br />
           <select name="filterType" id="filterType">
-              <option value="highpass">Highpass</option>
-              <option value="lowpass">Lowpass</option>
+            <option value="highpass">Highpass</option>
+            <option value="lowpass">Lowpass</option>
           </select>
-          </p>
-          <p>Filter CutOff = <span id="fCutOff"></span></p>
-          <input type="range" min="10" max="4000" value='0' class="slider" id="myfCutOff">
+        </p>
+        <p>Filter CutOff = <span id="fCutOff"></span></p>
+        <input type="range" min="10" max="4000" value='0' class="slider" id="myfCutOff">
       </div>
     </div>
-    
+
     <div class='bottom'>
       <div class="oscbox">
         <canvas id="oscilloscope"></canvas>
@@ -89,14 +89,4 @@
         <div data-note="C6" class="key"></div>
       </div>
     </div>
-    <p><span id="bpm"></span> bpm</p>
-    <input type="range" min="60" max="240" value="120" id="bpmslider">
-    <div id="sequencer">
-        <div id="seqrow"></div>
-        <div id="seqrow"></div>
-        <div id="seqrow"></div>
-        <div id="seqrow"></div>
-    </div>
-    <button id="starter">Start</button>
-    <button id="stopper">Stop</button>
   </div>

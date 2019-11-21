@@ -27,7 +27,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/test.js"
+              "src/assets/js/test.js",
+              "src/assets/js/seq.js"
             ]
           },
           "configurations": {

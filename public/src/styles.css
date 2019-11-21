@@ -101,3 +101,31 @@ h1{
     margin-top: 20px;
     margin-left: 20%;
 }
+
+#sequencer {
+    width: 700px;
+}
+
+.seqbtn {
+    width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    margin-right: 2px;
+}
+
+.active {
+    background-color: lightblue;
+}
+
+.box{
+    border: 1px solid slategray;
+    background-color: none;
+    width: 40px;
+    height: 40px;
+}
+#tempo{
+    position: absolute;
+    margin-top: -210px;
+    margin-left: -1px;
+}
