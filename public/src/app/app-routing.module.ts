@@ -9,13 +9,13 @@ import { PwmComponent } from './pwm/pwm.component';
 
 
 const routes: Routes = [
-  {path: "basic", component: BasicComponent},
+  /* {path: "basic", component: BasicComponent},
   {path: "pulse", component: PulseComponent},
   {path: "fm", component: FmComponent},
   {path: "am", component: AmComponent},
   {path: "fat", component: FatComponent},
   {path: "pwm", component: PwmComponent},
-  {path: "", redirectTo: "basic", pathMatch: "full" }
+  {path: "", redirectTo: "basic", pathMatch: "full" } */
 ];
 
 @NgModule({

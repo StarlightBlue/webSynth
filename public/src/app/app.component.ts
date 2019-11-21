@@ -8,11 +8,14 @@ import {Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'WebSynth';
+  curOsc:string;
   oscillators = [{type: "basic"}, {type: "pulse"}, {type: "fm"}, {type: "am"}, {type: "fat"}, {type: "pwm"}]
   constructor(private _router: Router){}
-
-  public onChange(event): void {
-    const newVal = event.target.value;
-    this._router.navigate([`/${newVal}`]);
+  ngOnInit() {
+    this.curOsc = "basic"
   }
+  //public onChange(event): void {
+    //const oscVal = event.target.value;
+    //this._router.navigate([`/${newVal}`]);
+  //}
 }

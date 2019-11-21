@@ -78,6 +78,18 @@ window.onload = function () {
             synth.voices[i].oscillator.type = type+carrier;
         }
     });
+    $('.mainosc').change(function () {
+        if (this.value == 'pulse'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'pulse';
+            }
+        }
+        if (this.value == 'basic'){
+            for(let i = 0; i < synth.voices.length; i++){
+                synth.voices[i].oscillator.type = 'triangle';
+            }
+        }
+    });
     $('#type').change(function () {
         type = $(this).val();
         for(let i = 0; i < synth.voices.length; i++){

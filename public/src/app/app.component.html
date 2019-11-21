@@ -2,13 +2,15 @@
   <h1>WEBSYNTH (w/ Tone.js)</h1>
   <div class="mainoscbox">
     <h3>Oscillator</h3>
-    <select name="mainosc" class="mainosc" (change)="onChange($event)">
+    <select name="mainosc" class="mainosc" [(ngModel)]="curOsc">
         <option *ngFor="let osc of oscillators" [value]="osc.type">{{osc.type}}</option>
     </select>
   </div>
   <div class="modifiers">
     <div class="d-flex">
       <div class="slidecontainer">
+        <app-basic *ngIf="(curOsc == 'basic')"></app-basic>
+        <app-pulse *ngIf="(curOsc == 'pulse')"></app-pulse>
         <router-outlet></router-outlet>
       </div>
   <!--    <div class="slidecontainer">
