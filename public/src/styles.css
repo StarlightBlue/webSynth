@@ -73,7 +73,8 @@ h1{
     transition: opacity .2s;
 }
 .childslider{
-    width: 112%;
+    width: 255px;
+    margin-top: 15px;
 }
 
 .slider:hover {

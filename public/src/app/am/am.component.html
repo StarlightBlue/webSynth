@@ -3,10 +3,22 @@
     <label for="osc">Carrier Oscillator</label>
     <br/>
     <select name="osc" id="osc">
-    <option value="triangle">Triangle</option>
-    <option value="sine">Sine</option>
-    <option value="sawtooth">Sawtooth</option>
-    <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sine">Sine</option>
+        <option value="sawtooth">Sawtooth</option>
+        <option value="square">Square</option>
     </select>
+    <br>
+    <label for="mod">Modulation</label>
+    <br/>
+    <select name="mod" id="mod">
+        <option value="triangle">Triangle</option>
+        <option value="sine">Sine</option>
+        <option value="sawtooth">Sawtooth</option>
+        <option value="square" selected>Square</option>
+    </select>
+    <br>
+    Harmonicity = <span id="harmony"></span>
+    <input type="range" min="10" max="500" value="" class="childslider" id="myHarmony">
 </p>
     
