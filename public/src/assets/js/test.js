@@ -1,3 +1,4 @@
+
 window.onload = function () {
 
     var filter = new Tone.Filter({
@@ -16,6 +17,7 @@ window.onload = function () {
 
     var type = "";
     var carrier = "triangle";
+    var mod = "square";
 
     console.log(synth.voices[0].oscillator.type)
     console.log(synth.voices[0].oscillator)
@@ -78,6 +80,12 @@ window.onload = function () {
             synth.voices[i].oscillator.type = type + carrier;
         }
     });
+    $(document).on('change', '#mod', function () {
+        mod = $(this).val();
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].oscillator.modulationType = mod;
+        }
+    });
     $('.mainosc').change(function () {
         if (this.value == 'pulse') {
             for (let i = 0; i < synth.voices.length; i++) {
@@ -97,28 +105,99 @@ window.onload = function () {
             }
         }
         if (this.value == 'basic') {
+            type = "";
             for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'triangle';
             }
         }
         if (this.value == 'fm') {
+            type = "fm";
             for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'fmtriangle';
             }
+            var ModIdxSlider = document.getElementById('myModIdx');
+            document.getElementById('myModIdx').value = synth.voices[0].oscillator.modulationIndex.value * 100;
+            var curIdx = synth.voices[0].oscillator.modulationIndex.value;
+            var showIdx = document.getElementById('modIdx');
+            showIdx.innerHTML = curIdx.toFixed(2);
+            ModIdxSlider.oninput = function() {
+                showIdx.innerHTML = ((this.value) /100).toFixed(2);
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.modulationIndex.value = (this.value) / 100;
+                }
+            }
+            var HarmSlider = document.getElementById('myHarmony');
+            document.getElementById('myHarmony').value = synth.voices[0].oscillator.harmonicity.value * 100;
+            var curHarm = synth.voices[0].oscillator.harmonicity.value;
+            var showHarm = document.getElementById('harmony');
+            showHarm.innerHTML = curHarm.toFixed(2);
+            HarmSlider.oninput = function() {
+                showHarm.innerHTML = ((this.value) /100).toFixed(2);
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.harmonicity.value = (this.value) / 100;
+                }
+            }
         }
         if (this.value == 'am') {
+            type = "am"
             for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'amtriangle';
             }
+            var HarmSlider = document.getElementById('myHarmony');
+            document.getElementById('myHarmony').value = synth.voices[0].oscillator.harmonicity.value * 100;
+            var curHarm = synth.voices[0].oscillator.harmonicity.value;
+            var showHarm = document.getElementById('harmony');
+            showHarm.innerHTML = curHarm.toFixed(2);
+            HarmSlider.oninput = function() {
+                showHarm.innerHTML = ((this.value) /100).toFixed(2);
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.harmonicity.value = (this.value) / 100;
+                }
+            }
         }
         if (this.value == 'fat') {
+            type ="fat"
             for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'fattriangle';
+            }
+            
+            var SpreadSlider = document.getElementById('mySpread');
+            document.getElementById('mySpread').value = synth.voices[0].oscillator.spread;
+            var curSpread = synth.voices[0].oscillator.spread;
+            var showSpread = document.getElementById('spread');
+            showSpread.innerHTML = curSpread;
+            SpreadSlider.oninput = function() {
+                showSpread.innerHTML = ((this.value));
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.spread = (this.value);
+                }
+            }
+            var CountSlider = document.getElementById('myCount');
+            document.getElementById('myCount').value = synth.voices[0].oscillator.count;
+            var curCount = synth.voices[0].oscillator.count;
+            var showCount = document.getElementById('count');
+            showCount.innerHTML = curCount;
+            CountSlider.oninput = function() {
+                showCount.innerHTML = ((this.value));
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.count = (this.value);
+                }
             }
         }
         if (this.value == 'pwm') {
             for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'pwm';
+            }
+            var ModFreqSlider = document.getElementById('myModFreq');
+            document.getElementById('myModFreq').value = synth.voices[0].oscillator.modulationFrequency.value * 100;
+            var curFreq = synth.voices[0].oscillator.modulationFrequency.value;
+            var showFreq = document.getElementById('modFreq');
+            showFreq.innerHTML = curFreq.toFixed(2);
+            ModFreqSlider.oninput = function() {
+                showFreq.innerHTML = ((this.value) /100).toFixed(2);
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.modulationFrequency.value = (this.value) / 100;
+                }
             }
         }
     });

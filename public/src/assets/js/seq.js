@@ -1,4 +1,4 @@
-window.onload = function () {
+/* window.onload = function () {
     document.getElementById('starter').addEventListener('click', () => {
         if (Tone.context.state !== 'running') Tone.context.resume();
     });
@@ -74,4 +74,4 @@ window.onload = function () {
         }
         index++;
     }
-}
+} */
