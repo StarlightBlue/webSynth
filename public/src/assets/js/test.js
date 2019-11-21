@@ -9,7 +9,7 @@ window.onload = function () {
     var synth = new Tone.PolySynth(4, Tone.synth,
         {
             oscillator: {
-                type:"triangle",
+                type: "triangle",
             }
         }
     ).connect(filter);
@@ -72,48 +72,60 @@ window.onload = function () {
     piano.addEventListener("mouseout", e => {
         synth.triggerRelease(e.target.dataset.note);
     });
-    $(document).on('change','#osc', function () {
+    $(document).on('change', '#osc', function () {
         carrier = $(this).val();
-        for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[i].oscillator.type = type+carrier;
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].oscillator.type = type + carrier;
         }
     });
     $('.mainosc').change(function () {
-        if (this.value == 'pulse'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'pulse') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'pulse';
+                console.log(synth.voices[0].oscillator)
+            }
+            var PWidthSlider = document.getElementById('mywidth');
+            document.getElementById('mywidth').value = synth.voices[0].oscillator.width.value * 100;
+            var curwidth = synth.voices[0].oscillator.width.value;
+            var showwidth = document.getElementById('pulsewidth');
+            showwidth.innerHTML = curwidth.toFixed(2);
+            PWidthSlider.oninput = function () {
+                showwidth.innerHTML = ((this.value) / 100).toFixed(2);
+                for (let i = 0; i < synth.voices.length; i++) {
+                    synth.voices[i].oscillator.width.value = (this.value) / 100;
+                }
             }
         }
-        if (this.value == 'basic'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'basic') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'triangle';
             }
         }
-        if (this.value == 'fm'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'fm') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'fmtriangle';
             }
         }
-        if (this.value == 'am'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'am') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'amtriangle';
             }
         }
-        if (this.value == 'fat'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'fat') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'fattriangle';
             }
         }
-        if (this.value == 'pwm'){
-            for(let i = 0; i < synth.voices.length; i++){
+        if (this.value == 'pwm') {
+            for (let i = 0; i < synth.voices.length; i++) {
                 synth.voices[i].oscillator.type = 'pwm';
             }
         }
     });
     $('#type').change(function () {
         type = $(this).val();
-        for(let i = 0; i < synth.voices.length; i++){
-            synth.voices[i].oscillator.type = type+carrier;
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].oscillator.type = type + carrier;
         }
     });
     $('#filterType').change(function () {
@@ -158,7 +170,7 @@ window.onload = function () {
     showAtk.innerHTML = curAtk.toFixed(2);
     AtkSlider.oninput = function () {
         showAtk.innerHTML = ((this.value) / 100).toFixed(2);
-        for(let i = 0; i < synth.voices.length; i++){
+        for (let i = 0; i < synth.voices.length; i++) {
             synth.voices[i].envelope.attack = (this.value) / 100;
         }
     }
@@ -170,7 +182,7 @@ window.onload = function () {
     showDcy.innerHTML = curDcy.toFixed(2);
     DcySlider.oninput = function () {
         showDcy.innerHTML = ((this.value) / 100).toFixed(2);
-        for(let i = 0; i < synth.voices.length; i++){
+        for (let i = 0; i < synth.voices.length; i++) {
             synth.voices[i].envelope.decay = (this.value) / 100;
         }
     }
@@ -182,7 +194,7 @@ window.onload = function () {
     showSus.innerHTML = curSus.toFixed(2);
     SusSlider.oninput = function () {
         showSus.innerHTML = ((this.value) / 100).toFixed(2);
-        for(let i = 0; i < synth.voices.length; i++){
+        for (let i = 0; i < synth.voices.length; i++) {
             synth.voices[i].envelope.sustain = (this.value) / 100;
         }
     }
@@ -194,10 +206,11 @@ window.onload = function () {
     showRel.innerHTML = curRel.toFixed(2);
     RelSlider.oninput = function () {
         showRel.innerHTML = ((this.value) / 100).toFixed(2);
-        for(let i = 0; i < synth.voices.length; i++){
+        for (let i = 0; i < synth.voices.length; i++) {
             synth.voices[i].envelope.release = (this.value) / 100;
         }
     }
+
 
     WebMidi.enable(function (err) {
 
@@ -206,15 +219,15 @@ window.onload = function () {
         } else {
             console.log("WebMidi enabled!");
             console.log(WebMidi.inputs);
-            if (WebMidi.inputs.length > 0){
+            if (WebMidi.inputs.length > 0) {
                 var input = WebMidi.inputs[0];
-            input.addListener('noteon', "all", function(e) {
-                synth.triggerAttack(""+e.note.name+e.note.octave);
-            })
-            input.addListener('noteoff', "all", function(e) {
-                synth.triggerRelease(""+e.note.name+e.note.octave);
-            })
-            }   
+                input.addListener('noteon', "all", function (e) {
+                    synth.triggerAttack("" + e.note.name + e.note.octave);
+                })
+                input.addListener('noteoff', "all", function (e) {
+                    synth.triggerRelease("" + e.note.name + e.note.octave);
+                })
+            }
         }
     });
 
