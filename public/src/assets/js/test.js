@@ -323,11 +323,12 @@ window.onload = function () {
         bpmslider.oninput = function () {
             showbpm.innerHTML = this.value;
         }
-        const synths = [new Tone.Synth(), new Tone.Synth(), new Tone.Synth(), new Tone.Synth()];
-        synths[0].oscillator.type = "triangle";
-        synths[1].oscillator.type = "sine";
-        synths[2].oscillator.type = "sawtooth";
-        synths[3].oscillator.type = "square";
+        const synths = [
+            new Tone.Player("./assets/samples/LCU_808_DKit_16_Clap.wav"),
+            new Tone.Player("./assets/samples/LCU_808_DKit_16_Hat.wav"),
+            new Tone.Player("./assets/samples/LCU_808_DKit_16_Perc.wav"),
+            new Tone.Player("./assets/samples/LCU_808_DKit_16_Kick.wav"),
+        ];
 
         const gain = new Tone.Gain(0.6).toMaster();
 
@@ -377,7 +378,7 @@ window.onload = function () {
                 let note = notes[i];
                 let input = row.querySelector(`.seqbtn:nth-child(${step + 1})`)
                 if ($(input).hasClass("active")) {
-                    synth.triggerAttackRelease(note, "16n", time);
+                    synth.start();
                 }
             }
             index++;
