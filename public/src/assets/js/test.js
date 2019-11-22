@@ -34,7 +34,7 @@ window.onload = function () {
     function drawGraph() {
         requestAnimationFrame(drawGraph);
         const value = analyzer.getValue(synth);
-        canvasCtx.fillStyle = "rgb(9,9,121)";
+        canvasCtx.fillStyle = "rgb(25,25,73)";
         canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
         canvasCtx.lineWidth = 2;
@@ -311,7 +311,7 @@ window.onload = function () {
     });
 
         $('#tempo').hide();
-        $(document).on('click', function(){
+        $('.key').on('click', function(){
             $('#tempo').show();
 
         })

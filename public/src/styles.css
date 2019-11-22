@@ -1,5 +1,6 @@
 body {
     background-color: #5f6e87 !important;
+    /* background: linear-gradient(90deg, rgba(172,172,172,1) 1%, rgba(95,110,135,1) 15%, rgba(172,172,172,1) 50%, rgba(95,110,135,1) 85%, rgba(172,172,172,1) 99%); */
     font-family: 'Tomorrow', sans-serif;
     font-weight: bold;
     color: white;
@@ -17,7 +18,9 @@ h1{
 
 .mainoscbox{
     height: 615px;
-    background-color: rgb(9,9,121);
+    padding: 10px;
+    background-color: rgb(25, 25, 73);
+    box-shadow:5px 8px;
 }
 .mainosc{
     width: 200px;
@@ -56,9 +59,11 @@ h1{
 .slidecontainer {
     width: 30%;
     margin-left: 25px;
+    padding: 10px;
     display: inline-block;
     vertical-align: top;
-    background-color: rgb(9,9,121);
+    background-color: rgb(25, 25, 73);
+    box-shadow: 5px 8px;
 }
 .slider, .childslider {
     -webkit-appearance: none;
@@ -73,7 +78,7 @@ h1{
     transition: opacity .2s;
 }
 .childslider{
-    width: 255px;
+    width: 235px;
     margin-top: 15px;
 }
 
@@ -87,7 +92,7 @@ h1{
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #5e82bd;
     cursor: pointer;
 }
 
@@ -95,7 +100,7 @@ h1{
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #5e82bd;
     cursor: pointer;
 }
 .oscbox{
@@ -105,6 +110,7 @@ h1{
 
 #sequencer {
     width: 700px;
+    position: relative;
 }
 
 .seqbtn {
@@ -124,10 +130,10 @@ h1{
     background-color: none;
     width: 40px;
     height: 40px;
-    margin-bottom: 3px;
+    margin-bottom: 3.5px;
 }
 #tempo{
     position: absolute;
-    margin-top: -196px;
-    margin-left: 370px;
+    margin-top: -174px;
+    margin-left: -10px;
 }
