@@ -10,6 +10,9 @@ h1{
     margin-top: -10px;
     text-align: center;
 }
+p{
+    line-height: 15px;
+}
 
 .modifiers, .mainoscbox{
     display: inline-block;
@@ -30,6 +33,13 @@ h1{
 }
 .container{
     padding: 30px;
+}
+#relCurve{
+    margin-left: 10px;
+}
+
+#atkCurve, #dcyCurve{
+    margin-left: 23px;
 }
 
 .dropdownbox{
@@ -80,12 +90,15 @@ h1{
 .childslider{
     width: 235px;
     margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .slider:hover {
     opacity: 1;
 }
-
+#osc, #mod{
+    margin-bottom: 10px;
+}
 .slider::-webkit-slider-thumb, .childslider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -106,6 +119,7 @@ h1{
 .oscbox{
     margin-top: 20px;
     margin-left: 20%;
+    margin-bottom: -20px;
 }
 
 #sequencer {
