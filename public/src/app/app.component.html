@@ -17,14 +17,56 @@
         <app-pwm *ngIf="(curOsc == 'pwm')"></app-pwm>
       </div>
       <div class="slidecontainer">
+
+          <label for="atkCurv">Attack Curve</label>
+        <br />
+        <select name="atkCurv" id="atkCurve">
+          <option value="linear">Linear</option>
+          <option value="exponential">Exponential</option>
+          <option value="sine">Sine</option>
+          <option value="cosine">Cosine</option>
+          <option value="bounce">Bounce</option>
+          <option value="ripple">Ripple</option>
+          <option value="step">Step</option>
+        </select>
+        <br>
+        
+
         <p>Attack = <span id="attack"></span></p>
         <input type="range" min="1" max="200" value='' class="slider" id="myAttack">
+
+        <label for="dcyCurv">Decay Curve</label>
+        <br />
+        <select name="dcyCurv" id="dcyCurve">
+          <option value="linear">Linear</option>
+          <option value="exponential">Exponential</option>
+        </select>
+        <br>
+
         <p>Decay = <span id="decay"></span></p>
         <input type="range" min="1" max="200" value='' class="slider" id="myDecay">
+
+
         <p>Sustain = <span id="sustain"></span></p>
         <input type="range" min="0" max="100" value='' class="slider" id="mySustain">
+
+        <label for="relCurv">Release Curve</label>
+        <br />
+        <select name="relCurv" id="relCurve">
+            <option value="linear">Linear</option>
+            <option value="exponential">Exponential</option>
+            <option value="sine">Sine</option>
+            <option value="cosine">Cosine</option>
+            <option value="bounce">Bounce</option>
+            <option value="ripple">Ripple</option>
+            <option value="step">Step</option>
+          </select>
+          <br>
+
         <p>Release = <span id="release"></span></p>
         <input type="range" min="1" max="400" value='' class="slider" id="myRelease">
+        
+        
       </div>
       <div class="slidecontainer">
         <p class="dropdownbox">
@@ -74,20 +116,20 @@
       </div>
 
       <p><span id="bpm"></span> bpm</p>
-    <input type="range" min="60" max="240" value="120" id="bpmslider" class="">
-    <div id="sequencer">
+      <input type="range" min="60" max="240" value="120" id="bpmslider" class="">
+      <div id="sequencer">
         <div id="seqrow"></div>
         <div id="seqrow"></div>
         <div id="seqrow"></div>
         <div id="seqrow"></div>
-    </div>
-    <br>
-    <div id="tempo">
+      </div>
+      <br>
+      <div id="tempo">
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
-    </div>
+      </div>
 
     </div>
   </div>

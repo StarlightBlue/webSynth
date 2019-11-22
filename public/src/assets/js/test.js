@@ -80,6 +80,29 @@ window.onload = function () {
             synth.voices[i].oscillator.type = type + carrier;
         }
     });
+
+    var attkCur = "linear"
+    $('#atkCurve').change(function(){
+        attkCur = $(this).val();
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].envelope.attackCurve = attkCur;
+        }
+    })
+    var decayCur = "linear"
+    $('#dcyCurve').change(function(){
+        decayCur = $(this).val();
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].envelope.decayCurve = decayCur;
+        }
+    })
+    var releaseCur = "linear"
+    $('#relCurve').change(function(){
+        releaseCur = $(this).val();
+        for (let i = 0; i < synth.voices.length; i++) {
+            synth.voices[i].envelope.releaseCurve = releaseCur;
+        }
+    })
+
     $(document).on('change', '#mod', function () {
         mod = $(this).val();
         for (let i = 0; i < synth.voices.length; i++) {
