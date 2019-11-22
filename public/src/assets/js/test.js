@@ -7,6 +7,7 @@ window.onload = function () {
     }).toMaster()
 
 
+
     var synth = new Tone.PolySynth(4, Tone.synth,
         {
             oscillator: {
@@ -14,6 +15,8 @@ window.onload = function () {
             }
         }
     ).connect(filter);
+
+    synth.volume.value = -6;
 
     var type = "";
     var carrier = "triangle";
