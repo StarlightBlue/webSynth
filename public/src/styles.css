@@ -35,11 +35,11 @@ p{
     padding: 30px;
 }
 #relCurve{
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 #atkCurve, #dcyCurve{
-    margin-left: 23px;
+    margin-left: 20px;
 }
 
 .dropdownbox{
@@ -144,10 +144,10 @@ p{
     background-color: none;
     width: 40px;
     height: 40px;
-    margin-bottom: 3.5px;
+    margin-bottom: 3px;
 }
 #tempo{
     position: absolute;
-    margin-top: -174px;
+    margin-top: -172px;
     margin-left: -10px;
 }
